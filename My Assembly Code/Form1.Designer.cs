@@ -42,7 +42,7 @@
             // input
             // 
             input.Location = new Point(92, 54);
-            input.Margin = new Padding(2);
+            input.Margin = new Padding(2, 2, 2, 2);
             input.Name = "input";
             input.Size = new Size(121, 166);
             input.TabIndex = 0;
@@ -51,17 +51,17 @@
             // runBtn
             // 
             runBtn.Location = new Point(106, 257);
-            runBtn.Margin = new Padding(2);
+            runBtn.Margin = new Padding(2, 2, 2, 2);
             runBtn.Name = "runBtn";
             runBtn.Size = new Size(90, 27);
             runBtn.TabIndex = 1;
             runBtn.Text = "Run";
             runBtn.UseVisualStyleBackColor = true;
+            runBtn.Click += runBtn_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ActiveCaptionText;
             label1.Location = new Point(402, 57);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
@@ -72,7 +72,7 @@
             // r1Txtbox
             // 
             r1Txtbox.Location = new Point(437, 54);
-            r1Txtbox.Margin = new Padding(2);
+            r1Txtbox.Margin = new Padding(2, 2, 2, 2);
             r1Txtbox.Name = "r1Txtbox";
             r1Txtbox.Size = new Size(121, 27);
             r1Txtbox.TabIndex = 3;
@@ -80,7 +80,7 @@
             // r2Txtbox
             // 
             r2Txtbox.Location = new Point(437, 84);
-            r2Txtbox.Margin = new Padding(2);
+            r2Txtbox.Margin = new Padding(2, 2, 2, 2);
             r2Txtbox.Name = "r2Txtbox";
             r2Txtbox.Size = new Size(121, 27);
             r2Txtbox.TabIndex = 5;
@@ -88,7 +88,6 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = SystemColors.ActiveCaptionText;
             label2.Location = new Point(402, 86);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
@@ -99,7 +98,7 @@
             // r3Txtbox
             // 
             r3Txtbox.Location = new Point(437, 114);
-            r3Txtbox.Margin = new Padding(2);
+            r3Txtbox.Margin = new Padding(2, 2, 2, 2);
             r3Txtbox.Name = "r3Txtbox";
             r3Txtbox.Size = new Size(121, 27);
             r3Txtbox.TabIndex = 7;
@@ -107,7 +106,6 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.ForeColor = SystemColors.ActiveCaptionText;
             label3.Location = new Point(402, 116);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
@@ -118,7 +116,7 @@
             // output
             // 
             output.Location = new Point(351, 211);
-            output.Margin = new Padding(2);
+            output.Margin = new Padding(2, 2, 2, 2);
             output.Name = "output";
             output.ReadOnly = true;
             output.Size = new Size(280, 133);
@@ -130,7 +128,6 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
             ClientSize = new Size(640, 353);
             Controls.Add(output);
             Controls.Add(r3Txtbox);
@@ -141,7 +138,7 @@
             Controls.Add(label1);
             Controls.Add(runBtn);
             Controls.Add(input);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form";
             Text = "Form1";
             ResumeLayout(false);
