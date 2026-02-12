@@ -5,6 +5,12 @@ namespace My_Assembly_Code
         public Form()
         {
             InitializeComponent();
+           
+        }
+
+        private void output_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
