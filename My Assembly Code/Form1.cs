@@ -5,6 +5,24 @@ namespace My_Assembly_Code
         int r1 = 0;
         int r2 = 0;
         int r3 = 0;
+
+        public void Load(int i, int reg) // LOAD function
+        {
+            switch (reg)
+            {
+                case 1:
+                    r1 = i;
+                    break;
+                case 2:
+                    r2 = i;
+                    break;
+                case 3:
+                    r3 = i;
+                    break;
+                default: 
+                    break;
+            }
+        }
         public Form()
         {
             InitializeComponent();
@@ -19,21 +37,22 @@ namespace My_Assembly_Code
         private void runBtn_Click(object sender, EventArgs e)
         {
             string[] user_input = input.Text.ToUpper().Split(' '); // (chris) Read from input textbox & assign uppercase split strings to user_input
+            // Use user_input[] to read each part of user commands
             if (user_input[0] == "LD") // LOAD command
             {
                 if (int.TryParse(user_input[1], out int v1) == true) // Validate the value being assigned
                 {
                     if (user_input[2] == "R1") // Validate the register which the value is being assigned to
                     {
-                        r1 = v1;
+                        Load(v1,1);
                     }
                     else if (user_input[2] == "R2")
                     {
-                        r2 = v1;
+                        Load(v1,2);
                     }
                     else if (user_input[2] == "R3")
                     {
-                        r3 = v1;
+                        Load(v1,3);
                     }
                     else // Throw register error
                     {
