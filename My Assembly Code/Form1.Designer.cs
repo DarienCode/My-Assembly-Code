@@ -41,8 +41,11 @@
             // 
             // input
             // 
+            input.BackColor = Color.DimGray;
+            input.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            input.ForeColor = SystemColors.ActiveCaption;
             input.Location = new Point(92, 54);
-            input.Margin = new Padding(2, 2, 2, 2);
+            input.Margin = new Padding(2);
             input.Name = "input";
             input.Size = new Size(121, 166);
             input.TabIndex = 0;
@@ -50,19 +53,23 @@
             // 
             // runBtn
             // 
+            runBtn.BackColor = Color.DimGray;
+            runBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            runBtn.ForeColor = SystemColors.ActiveCaption;
             runBtn.Location = new Point(106, 257);
-            runBtn.Margin = new Padding(2, 2, 2, 2);
+            runBtn.Margin = new Padding(2);
             runBtn.Name = "runBtn";
-            runBtn.Size = new Size(90, 27);
+            runBtn.Size = new Size(89, 44);
             runBtn.TabIndex = 1;
             runBtn.Text = "Run";
-            runBtn.UseVisualStyleBackColor = true;
+            runBtn.UseVisualStyleBackColor = false;
             runBtn.Click += runBtn_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(402, 57);
+            label1.BackColor = SystemColors.ActiveCaption;
+            label1.Location = new Point(402, 54);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(29, 20);
@@ -71,23 +78,32 @@
             // 
             // r1Txtbox
             // 
+            r1Txtbox.BackColor = Color.DimGray;
+            r1Txtbox.Enabled = false;
+            r1Txtbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            r1Txtbox.ForeColor = SystemColors.ActiveCaption;
             r1Txtbox.Location = new Point(437, 54);
-            r1Txtbox.Margin = new Padding(2, 2, 2, 2);
+            r1Txtbox.Margin = new Padding(2);
             r1Txtbox.Name = "r1Txtbox";
-            r1Txtbox.Size = new Size(121, 27);
+            r1Txtbox.Size = new Size(121, 34);
             r1Txtbox.TabIndex = 3;
             // 
             // r2Txtbox
             // 
+            r2Txtbox.BackColor = Color.DimGray;
+            r2Txtbox.Enabled = false;
+            r2Txtbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            r2Txtbox.ForeColor = SystemColors.ActiveCaption;
             r2Txtbox.Location = new Point(437, 84);
-            r2Txtbox.Margin = new Padding(2, 2, 2, 2);
+            r2Txtbox.Margin = new Padding(2);
             r2Txtbox.Name = "r2Txtbox";
-            r2Txtbox.Size = new Size(121, 27);
+            r2Txtbox.Size = new Size(121, 34);
             r2Txtbox.TabIndex = 5;
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = SystemColors.ActiveCaption;
             label2.Location = new Point(402, 86);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
@@ -97,15 +113,20 @@
             // 
             // r3Txtbox
             // 
+            r3Txtbox.BackColor = Color.DimGray;
+            r3Txtbox.Enabled = false;
+            r3Txtbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            r3Txtbox.ForeColor = SystemColors.ActiveCaption;
             r3Txtbox.Location = new Point(437, 114);
-            r3Txtbox.Margin = new Padding(2, 2, 2, 2);
+            r3Txtbox.Margin = new Padding(2);
             r3Txtbox.Name = "r3Txtbox";
-            r3Txtbox.Size = new Size(121, 27);
+            r3Txtbox.Size = new Size(121, 34);
             r3Txtbox.TabIndex = 7;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = SystemColors.ActiveCaption;
             label3.Location = new Point(402, 116);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
@@ -115,8 +136,11 @@
             // 
             // output
             // 
+            output.BackColor = Color.DimGray;
+            output.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            output.ForeColor = SystemColors.ActiveCaption;
             output.Location = new Point(351, 211);
-            output.Margin = new Padding(2, 2, 2, 2);
+            output.Margin = new Padding(2);
             output.Name = "output";
             output.ReadOnly = true;
             output.Size = new Size(280, 133);
@@ -128,6 +152,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(640, 353);
             Controls.Add(output);
             Controls.Add(r3Txtbox);
@@ -138,7 +163,7 @@
             Controls.Add(label1);
             Controls.Add(runBtn);
             Controls.Add(input);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Form";
             Text = "Form1";
             ResumeLayout(false);
