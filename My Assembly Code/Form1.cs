@@ -1,4 +1,5 @@
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 
 namespace My_Assembly_Code
 {
@@ -8,8 +9,32 @@ namespace My_Assembly_Code
         double r1 = 0; // Register 1
         double r2 = 0; // Register 2
         double r3 = 0; // Register 3
+        List<Command> command_list = new List<Command>();
 
-       
+
+        public List<Command> ParseInput(string UserInput) // Create command_list
+        {
+            command_list.Clear();
+
+            string[] lines = UserInput.Split('\n');
+
+            foreach (string line in lines)
+            {
+                string[] words = line.ToUpper().Split(' ');
+
+                Command new_cmd = new Command();
+                new_cmd.Operation = words[0];
+                new_cmd.Var1 = words[1];
+                new_cmd.Var2 = words[2];
+                if (words.Length > 3)
+                {
+                    new_cmd.Var3 = words[3];
+                }
+
+                command_list.Add(new_cmd);
+            }
+            return (command_list);
+        }
 
         public void Load() // LOAD command
         {
@@ -61,30 +86,52 @@ namespace My_Assembly_Code
 
         private void runBtn_Click(object sender, EventArgs e)
         {
-            user_input = input.Text.ToUpper().Split(' '); // Save textbox input to user_input, separated as an array
-            if (user_input[0] == "LD") // Call the LOAD command
+
+            ParseInput(input.Text);
+
+            foreach (Command cmd in command_list)
             {
-                Load();
-            }
-            else if (user_input[0] == "ADD") // Call the Add command
-            {
-                Add();
-            }
-            else if (user_input[0] == "MUL") // Call the multiple command
-            {
-                Multiple();
-            }
-            else if (user_input[0] == "DIV") // call the divide command
-            {
-                Divide();
-            }
-            else if (user_input[0] == "SUB") // call the substract command
+                List<string> words = new List<string>();
+                words.Add(cmd.Operation);
+                if (cmd.Var1 != null)
+                {
+                    words.Add(cmd.Var1);
+                }
+                if (cmd.Var2 != null)
+                {
+                    words.Add(cmd.Var2);
+                }
+                if (cmd.Var3 != null)
+                {
+                    words.Add(cmd.Var3);
+                }
+
+                user_input = words.ToArray(); // Running the humble ToArray method
+
+                if (user_input[0] == "LD") // Call the LOAD command
+                {
+                    Load();
+                }
+                else if (user_input[0] == "ADD") // Call the Add command
+                {
+                    Add();
+                }
+                else if (user_input[0] == "MUL") // Call the multiple command
+                {
+                    Multiple();
+                }
+                else if (user_input[0] == "DIV") // call the divide command
+                {
+                    Divide();
+                }
+                else if (user_input[0] == "SUB") // call the substract command
                 {
                     Substract();
-            }
-            else // Command error
-            {
-                MessageBox.Show("'" + user_input[0] + "' is an invalid command.");
+                }
+                else // Command error
+                {
+                    MessageBox.Show("'" + user_input[0] + "' is an invalid command.");
+                }
             }
         }
 
