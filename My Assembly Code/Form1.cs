@@ -16,16 +16,19 @@ namespace My_Assembly_Code
                     case "R1":
                         {
                             r1 = var;
+                            r1Txtbox.Text = var.ToString();
                             break;
                         }
                     case "R2":
                         {
                             r2 = var;
+                            r2Txtbox.Text = var.ToString();
                             break;
                         }
                     case "R3":
                         {
                             r3 = var;
+                            r3Txtbox.Text = var.ToString();
                             break;
                         }
                     default: // Register error
@@ -64,5 +67,6 @@ namespace My_Assembly_Code
                 MessageBox.Show("'" + user_input[0] +  "' is an invalid command.");
             }
         }
+        
     }
 }
