@@ -114,9 +114,8 @@
             // r3Txtbox
             // 
             r3Txtbox.BackColor = Color.DimGray;
-            r3Txtbox.Enabled = false;
             r3Txtbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            r3Txtbox.ForeColor = SystemColors.ActiveCaption;
+            r3Txtbox.ForeColor = SystemColors.ControlText;
             r3Txtbox.Location = new Point(546, 142);
             r3Txtbox.Margin = new Padding(2);
             r3Txtbox.Name = "r3Txtbox";
