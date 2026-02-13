@@ -45,19 +45,19 @@ namespace My_Assembly_Code
                     case "R1":
                         {
                             r1 = var;
-                            r1Txtbox.Text = var.ToString();
+                            r1Txtbox.Text = r1.ToString();
                             break;
                         }
                     case "R2":
                         {
                             r2 = var;
-                            r2Txtbox.Text = var.ToString();
+                            r2Txtbox.Text = r2.ToString();
                             break;
                         }
                     case "R3":
                         {
                             r3 = var;
-                            r3Txtbox.Text = var.ToString();
+                            r3Txtbox.Text = r3.ToString();
                             break;
                         }
                     default: // Register error
@@ -139,10 +139,9 @@ namespace My_Assembly_Code
         {
             double val;
             double val2;
-
-          if(user_input.Length != 3) // Validate correct number of arguments
+          if(user_input.Length != 4) // Validate correct number of arguments
             {
-                MessageBox.Show("ADD command requires 3 arguments.");
+                MessageBox.Show("ADD command requires 4 arguments.");
                 return;
             }
             // Get first register value
@@ -193,12 +192,36 @@ namespace My_Assembly_Code
                         return;
                     }
             }
-            r3 = val + val2;
-            r3Txtbox.Text = r3.ToString();
-            output.Text = r3.ToString();
-            r1Txtbox.Text = "";
-            r2Txtbox.Text = "";
-
+            // Get third register value
+            switch (user_input[3])
+            {
+                case "R1":
+                    {
+                        r1 = val + val2;
+                        r1Txtbox.Text = r1.ToString();
+                        output.Text = r1.ToString();
+                        break;
+                    }
+                case "R2":
+                    {
+                        r2 = val + val2;
+                        r2Txtbox.Text = r2.ToString();
+                        output.Text = r2.ToString();
+                        break;
+                    }
+                case "R3":
+                    {
+                        r3 = val + val2;
+                        r3Txtbox.Text = r3.ToString();
+                        output.Text = r3.ToString();
+                        break;
+                    }
+                default: // Register error
+                    {
+                        MessageBox.Show("Must name a valid register to add to. (R1, R2, or R3)");
+                        return;
+                    }
+            }            
         }
 
         private void Multiple()
@@ -206,9 +229,9 @@ namespace My_Assembly_Code
             double val;
             double val2;
 
-            if (user_input.Length != 3) 
+            if (user_input.Length != 4) 
             {
-                MessageBox.Show("ADD command requires 3 arguments.");
+                MessageBox.Show("MUL command requires 4 arguments.");
                 return;
             }
             
@@ -231,7 +254,7 @@ namespace My_Assembly_Code
                     }
                 default: 
                     {
-                        MessageBox.Show("Must name a valid register to add from. (R1, R2, or R3)");
+                        MessageBox.Show("Must name a valid register to multiply from. (R1, R2, or R3)");
                         return;
                     }
             }
@@ -255,16 +278,40 @@ namespace My_Assembly_Code
                     }
                 default: 
                     {
-                        MessageBox.Show("Must name a valid register to add from. (R1, R2, or R3)");
+                        MessageBox.Show("Must name a valid register to multiply from. (R1, R2, or R3)");
                         return;
                     }
             }
-            r3 = val * val2;
-            r3Txtbox.Text = r3.ToString();
-            output.Text = r3.ToString();
-            r1Txtbox.Text = "";
-            r2Txtbox.Text = "";
 
+            switch (user_input[3])
+            {
+                case "R1":
+                    {
+                        r1 = val * val2;
+                        r1Txtbox.Text = r1.ToString();
+                        output.Text = r1.ToString();
+                        break;
+                    }
+                case "R2":
+                    {
+                        r2 = val * val2;
+                        r2Txtbox.Text = r2.ToString();
+                        output.Text = r2.ToString();
+                        break;
+                    }
+                case "R3":
+                    {
+                        r3 = val * val2;
+                        r3Txtbox.Text = r3.ToString();
+                        output.Text = r3.ToString();
+                        break;
+                    }
+                default:
+                    {
+                        MessageBox.Show("Must name a valid register to multiply to. (R1, R2, or R3)");
+                        return;
+                    }
+            }            
         }
 
         private void Divide()
@@ -272,9 +319,9 @@ namespace My_Assembly_Code
             double val;
             double val2;
 
-            if (user_input.Length != 3) 
+            if (user_input.Length != 4) 
             {
-                MessageBox.Show("ADD command requires 3 arguments.");
+                MessageBox.Show("DIV command requires 4 arguments.");
                 return;
             }
            
@@ -297,7 +344,7 @@ namespace My_Assembly_Code
                     }
                 default: 
                     {
-                        MessageBox.Show("Must name a valid register to add from. (R1, R2, or R3)");
+                        MessageBox.Show("Must name a valid register to divide from. (R1, R2, or R3)");
                         return;
                     }
             }
@@ -321,16 +368,40 @@ namespace My_Assembly_Code
                     }
                 default: 
                     {
-                        MessageBox.Show("Must name a valid register to add from. (R1, R2, or R3)");
+                        MessageBox.Show("Must name a valid register to divide from. (R1, R2, or R3)");
                         return;
                     }
             }
-            r3 = val / val2;
-            r3Txtbox.Text = r3.ToString();
-            output.Text = r3.ToString();
-            r1Txtbox.Text = "";
-            r2Txtbox.Text = "";
 
+            switch (user_input[3])
+            {
+                case "R1":
+                    {
+                        r1 = val / val2;
+                        r1Txtbox.Text = r1.ToString();
+                        output.Text = r1.ToString();
+                        break;
+                    }
+                case "R2":
+                    {
+                        r2 = val / val2;
+                        r2Txtbox.Text = r2.ToString();
+                        output.Text = r2.ToString();
+                        break;
+                    }
+                case "R3":
+                    {
+                        r3 = val / val2;
+                        r3Txtbox.Text = r3.ToString();
+                        output.Text = r3.ToString();
+                        break;
+                    }
+                default:
+                    {
+                        MessageBox.Show("Must name a valid register to divide to. (R1, R2, or R3)");
+                        return;
+                    }
+            }            
         }
 
 
@@ -339,9 +410,9 @@ namespace My_Assembly_Code
             double val;
             double val2;
 
-            if (user_input.Length != 3) 
+            if (user_input.Length != 4) 
             {
-                MessageBox.Show("ADD command requires 3 arguments.");
+                MessageBox.Show("SUB command requires 4 arguments.");
                 return;
             }
            
@@ -364,7 +435,7 @@ namespace My_Assembly_Code
                     }
                 default: 
                     {
-                        MessageBox.Show("Must name a valid register to add from. (R1, R2, or R3)");
+                        MessageBox.Show("Must name a valid register to subtract from. (R1, R2, or R3)");
                         return;
                     }
             }
@@ -388,16 +459,40 @@ namespace My_Assembly_Code
                     }
                 default: // Register error
                     {
-                        MessageBox.Show("Must name a valid register to add from. (R1, R2, or R3)");
+                        MessageBox.Show("Must name a valid register to subtract from. (R1, R2, or R3)");
                         return;
                     }
             }
-            r3 = val - val2;
-            r3Txtbox.Text = r3.ToString();
-            output.Text = r3.ToString();
-            r1Txtbox.Text = "";
-            r2Txtbox.Text = "";
 
+            switch (user_input[3])
+            {
+                case "R1":
+                    {
+                        r1 = val - val2;
+                        r1Txtbox.Text = r1.ToString();
+                        output.Text = r1.ToString();
+                        break;
+                    }
+                case "R2":
+                    {
+                        r2 = val - val2;
+                        r2Txtbox.Text = r2.ToString();
+                        output.Text = r2.ToString();
+                        break;
+                    }
+                case "R3":
+                    {
+                        r3 = val - val2;
+                        r3Txtbox.Text = r3.ToString();
+                        output.Text = r3.ToString();
+                        break;
+                    }
+                default: // Register error
+                    {
+                        MessageBox.Show("Must name a valid register to subtract to. (R1, R2, or R3)");
+                        return;
+                    }
+            }            
         }
     }
 
