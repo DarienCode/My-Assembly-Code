@@ -84,6 +84,7 @@
             r1Txtbox.Location = new Point(437, 54);
             r1Txtbox.Margin = new Padding(2);
             r1Txtbox.Name = "r1Txtbox";
+            r1Txtbox.ReadOnly = true;
             r1Txtbox.Size = new Size(121, 34);
             r1Txtbox.TabIndex = 3;
             // 
@@ -95,6 +96,7 @@
             r2Txtbox.Location = new Point(437, 84);
             r2Txtbox.Margin = new Padding(2);
             r2Txtbox.Name = "r2Txtbox";
+            r2Txtbox.ReadOnly = true;
             r2Txtbox.Size = new Size(121, 34);
             r2Txtbox.TabIndex = 5;
             // 
@@ -117,6 +119,7 @@
             r3Txtbox.Location = new Point(437, 114);
             r3Txtbox.Margin = new Padding(2);
             r3Txtbox.Name = "r3Txtbox";
+            r3Txtbox.ReadOnly = true;
             r3Txtbox.Size = new Size(121, 34);
             r3Txtbox.TabIndex = 7;
             // 
