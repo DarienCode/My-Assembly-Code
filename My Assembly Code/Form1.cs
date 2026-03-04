@@ -137,363 +137,77 @@ namespace My_Assembly_Code
 
         private void Add() 
         {
-            double val;
-            double val2;
           if(user_input.Length != 4) // Validate correct number of arguments
             {
-                MessageBox.Show("ADD command requires 4 arguments.");
+                MessageBox.Show("ADD command requires 3 arguments.");
                 return;
             }
-            // Get first register value
-            switch (user_input[1])
-            {
-                case "R1":
-                    {
-                        val = r1;
-                        break;
-                    }
-                case "R2":
-                    {
-                        val = r2;
-                        break;
-                    }
-                case "R3":
-                    {
-                        val = r3;
-                        break;
-                    }
-                default: // Register error
-                    {
-                        MessageBox.Show("Must name a valid register to add from. (R1, R2, or R3)");
-                        return;
-                    }
-            }
-            // Get second register value
-            switch (user_input[2])
-            {
-                case "R1":
-                    {
-                        val2 = r1;
-                        break;
-                    }
-                case "R2":
-                    {
-                        val2 = r2;
-                        break;
-                    }
-                case "R3":
-                    {
-                        val2 = r3;
-                        break;
-                    }
-                default: // Register error
-                    {
-                        MessageBox.Show("Must name a valid register to add from. (R1, R2, or R3)");
-                        return;
-                    }
-            }
-            // Get third register value
-            switch (user_input[3])
-            {
-                case "R1":
-                    {
-                        r1 = val + val2;
-                        r1Txtbox.Text = r1.ToString();
-                        output.Text = r1.ToString();
-                        break;
-                    }
-                case "R2":
-                    {
-                        r2 = val + val2;
-                        r2Txtbox.Text = r2.ToString();
-                        output.Text = r2.ToString();
-                        break;
-                    }
-                case "R3":
-                    {
-                        r3 = val + val2;
-                        r3Txtbox.Text = r3.ToString();
-                        output.Text = r3.ToString();
-                        break;
-                    }
-                default: // Register error
-                    {
-                        MessageBox.Show("Must name a valid register to add to. (R1, R2, or R3)");
-                        return;
-                    }
-            }            
-        }
+            double val = Getter(user_input[1]);
+            double val2 = Getter(user_input[2]);
+            Setter(user_input[3], val + val2);  
+        }            
 
         private void Multiple()
         {
-            double val;
-            double val2;
-
             if (user_input.Length != 4) 
             {
-                MessageBox.Show("MUL command requires 4 arguments.");
+                MessageBox.Show("MUL command requires 3 arguments: MUL dest src1 src2");
                 return;
             }
-            
-            switch (user_input[1])
-            {
-                case "R1":
-                    {
-                        val = r1;
-                        break;
-                    }
-                case "R2":
-                    {
-                        val = r2;
-                        break;
-                    }
-                case "R3":
-                    {
-                        val = r3;
-                        break;
-                    }
-                default: 
-                    {
-                        MessageBox.Show("Must name a valid register to multiply from. (R1, R2, or R3)");
-                        return;
-                    }
-            }
-           
-            switch (user_input[2])
-            {
-                case "R1":
-                    {
-                        val2 = r1;
-                        break;
-                    }
-                case "R2":
-                    {
-                        val2 = r2;
-                        break;
-                    }
-                case "R3":
-                    {
-                        val2 = r3;
-                        break;
-                    }
-                default: 
-                    {
-                        MessageBox.Show("Must name a valid register to multiply from. (R1, R2, or R3)");
-                        return;
-                    }
-            }
-
-            switch (user_input[3])
-            {
-                case "R1":
-                    {
-                        r1 = val * val2;
-                        r1Txtbox.Text = r1.ToString();
-                        output.Text = r1.ToString();
-                        break;
-                    }
-                case "R2":
-                    {
-                        r2 = val * val2;
-                        r2Txtbox.Text = r2.ToString();
-                        output.Text = r2.ToString();
-                        break;
-                    }
-                case "R3":
-                    {
-                        r3 = val * val2;
-                        r3Txtbox.Text = r3.ToString();
-                        output.Text = r3.ToString();
-                        break;
-                    }
-                default:
-                    {
-                        MessageBox.Show("Must name a valid register to multiply to. (R1, R2, or R3)");
-                        return;
-                    }
-            }            
+            double val = Getter(user_input[1]);
+            double val2 = Getter(user_input[2]);
+            Setter(user_input[3], val * val2);
         }
 
         private void Divide()
         {
-            double val;
-            double val2;
-
             if (user_input.Length != 4) 
             {
                 MessageBox.Show("DIV command requires 4 arguments.");
                 return;
             }
-           
-            switch (user_input[1])
-            {
-                case "R1":
-                    {
-                        val = r1;
-                        break;
-                    }
-                case "R2":
-                    {
-                        val = r2;
-                        break;
-                    }
-                case "R3":
-                    {
-                        val = r3;
-                        break;
-                    }
-                default: 
-                    {
-                        MessageBox.Show("Must name a valid register to divide from. (R1, R2, or R3)");
-                        return;
-                    }
-            }
-            
-            switch (user_input[2])
-            {
-                case "R1":
-                    {
-                        val2 = r1;
-                        break;
-                    }
-                case "R2":
-                    {
-                        val2 = r2;
-                        break;
-                    }
-                case "R3":
-                    {
-                        val2 = r3;
-                        break;
-                    }
-                default: 
-                    {
-                        MessageBox.Show("Must name a valid register to divide from. (R1, R2, or R3)");
-                        return;
-                    }
-            }
 
-            switch (user_input[3])
-            {
-                case "R1":
-                    {
-                        r1 = val / val2;
-                        r1Txtbox.Text = r1.ToString();
-                        output.Text = r1.ToString();
-                        break;
-                    }
-                case "R2":
-                    {
-                        r2 = val / val2;
-                        r2Txtbox.Text = r2.ToString();
-                        output.Text = r2.ToString();
-                        break;
-                    }
-                case "R3":
-                    {
-                        r3 = val / val2;
-                        r3Txtbox.Text = r3.ToString();
-                        output.Text = r3.ToString();
-                        break;
-                    }
-                default:
-                    {
-                        MessageBox.Show("Must name a valid register to divide to. (R1, R2, or R3)");
-                        return;
-                    }
-            }            
+            double val = Getter(user_input[1]);
+            double val2 = Getter(user_input[2]);
+            Setter(user_input[3], val / val2);
         }
 
 
         private void Substract()
-        {
-            double val;
-            double val2;
-
-            if (user_input.Length != 4) 
+                {
+            if (user_input.Length != 4)
             {
                 MessageBox.Show("SUB command requires 4 arguments.");
                 return;
             }
-           
-            switch (user_input[1])
-            {
-                case "R1":
-                    {
-                        val = r1;
-                        break;
-                    }
-                case "R2":
-                    {
-                        val = r2;
-                        break;
-                    }
-                case "R3":
-                    {
-                        val = r3;
-                        break;
-                    }
-                default: 
-                    {
-                        MessageBox.Show("Must name a valid register to subtract from. (R1, R2, or R3)");
-                        return;
-                    }
-            }
-           
-            switch (user_input[2])
-            {
-                case "R1":
-                    {
-                        val2 = r1;
-                        break;
-                    }
-                case "R2":
-                    {
-                        val2 = r2;
-                        break;
-                    }
-                case "R3":
-                    {
-                        val2 = r3;
-                        break;
-                    }
-                default: // Register error
-                    {
-                        MessageBox.Show("Must name a valid register to subtract from. (R1, R2, or R3)");
-                        return;
-                    }
-            }
 
-            switch (user_input[3])
+            double val = Getter(user_input[1]);
+            double val2 = Getter(user_input[2]);
+            Setter(user_input[3], val - val2);
+        }
+
+        private double Getter(string reg)
+        {
+                switch (reg)
             {
-                case "R1":
-                    {
-                        r1 = val - val2;
-                        r1Txtbox.Text = r1.ToString();
-                        output.Text = r1.ToString();
-                        break;
-                    }
-                case "R2":
-                    {
-                        r2 = val - val2;
-                        r2Txtbox.Text = r2.ToString();
-                        output.Text = r2.ToString();
-                        break;
-                    }
-                case "R3":
-                    {
-                        r3 = val - val2;
-                        r3Txtbox.Text = r3.ToString();
-                        output.Text = r3.ToString();
-                        break;
-                    }
-                default: // Register error
-                    {
-                        MessageBox.Show("Must name a valid register to subtract to. (R1, R2, or R3)");
-                        return;
-                    }
-            }            
+                case "R1": return r1;
+                case "R2": return r2;
+                case "R3": return r3;
+                default: MessageBox.Show("No register detected");
+                    return 0;
+            }
+        }
+        private void Setter(string reg, double number)
+        {
+            switch (reg)
+            {
+                case "R1": r1 = number; r1Txtbox.Text = number.ToString(); output.Text = number.ToString(); break;
+                case "R2": r2 = number; r2Txtbox.Text = number.ToString(); output.Text = number.ToString(); break;
+                case "R3": r3 = number; r3Txtbox.Text = number.ToString(); output.Text = number.ToString(); break;
+                default: MessageBox.Show("Must name a valid register. (R1, R2, or R3)"); break;
+            }
         }
     }
 
 }
+    
