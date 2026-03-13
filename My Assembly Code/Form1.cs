@@ -5,7 +5,6 @@ namespace My_Assembly_Code
 {    
     public partial class Form : System.Windows.Forms.Form
     {
-        string[] user_input = {"foo"}; // String array to read input from input textbox
         double r1 = 0; // Register 1
         double r2 = 0; // Register 2
         double r3 = 0; // Register 3
@@ -24,11 +23,11 @@ namespace My_Assembly_Code
         List<CharV> char_list = new List<CharV>();
         List<IntV> int_list = new List<IntV>();
 
-        public List<Command> ParseInput(string UserInput) // Create command_list
+        public List<Command> ParseInput(string Input) // Create command_list
         {
             command_list.Clear();
 
-            string[] lines = UserInput.Split('\n');
+            string[] lines = Input.Split('\n');
 
             foreach (string line in lines)
             {
@@ -48,11 +47,11 @@ namespace My_Assembly_Code
             return (command_list);
         }
 
-        public void Load() // LOAD command
+        public void Load(Command cmd) // LOAD command
         {
-            if (int.TryParse(user_input[1], out int var) == true) // Validate the value being assigned
+            if (int.TryParse(cmd.Var1, out int var) == true) // Validate the value being assigned
             {
-                switch (user_input[2]) // Validate the register being assigned to
+                switch (cmd.Var2) // Validate the register being assigned to
                 {
                     case "R1":
                         {
@@ -104,120 +103,105 @@ namespace My_Assembly_Code
             foreach (Command cmd in command_list)
             {
                 List<string> words = new List<string>();
-                words.Add(cmd.Operation);
-                if (cmd.Var1 != null)
-                {
-                    words.Add(cmd.Var1);
-                }
-                if (cmd.Var2 != null)
-                {
-                    words.Add(cmd.Var2);
-                }
-                if (cmd.Var3 != null)
-                {
-                    words.Add(cmd.Var3);
-                }
 
-                user_input = words.ToArray(); // Running the humble ToArray method
-
-                if (user_input[0] == "LD") // Call the LOAD command
+                if (cmd.Operation == "LD") // Call the LOAD command
                 {
-                    Load();
+                    Load(cmd);
                 }
-                else if (user_input[0] == "ADD") // Call the Add command
+                else if (cmd.Operation == "ADD") // Call the Add command
                 {
-                    Add();
+                    Add(cmd);
                 }
-                else if (user_input[0] == "MUL") // Call the multiple command
+                else if (cmd.Operation == "MUL") // Call the multiple command
                 {
-                    Multiple();
+                    Multiple(cmd);
                 }
-                else if (user_input[0] == "DIV") // call the divide command
+                else if (cmd.Operation == "DIV") // call the divide command
                 {
-                    Divide();
+                    Divide(cmd);
                 }
-                else if (user_input[0] == "SUB") // call the substract command
+                else if (cmd.Operation == "SUB") // call the substract command
                 {
-                    Substract();
+                    Substract(cmd);
                 }
-                else if (user_input[0] == "INT") // call the integer variable command
+                else if (cmd.Operation == "INT") // call the integer variable command
                 {
-                    IntegerV();
+                    IntegerV(cmd);
                 }
-                else if (user_input[0] == "CHAR") // call the character variable command
+                else if (cmd.Operation == "CHAR") // call the character variable command
                 {
-                    CharacterV();
+                    CharacterV(cmd);
                 }
                 else // Command error
                 {
-                    MessageBox.Show("'" + user_input[0] + "' is an invalid command.");
+                    MessageBox.Show("'" + cmd.Operation + "' is an invalid command.");
                 }
             }
         }
 
-        private void Add() 
+        private void Add(Command cmd) 
         {
-          if(user_input.Length != 4) // Validate correct number of arguments
+          if (cmd.Var3 == null) // Validate correct number of arguments
             {
                 MessageBox.Show("ADD command requires 3 arguments.");
                 return;
             }
-            double val = Getter(user_input[1]);
-            double val2 = Getter(user_input[2]);
-            Setter(user_input[3], val + val2);  
+            double val = Getter(cmd.Var1);
+            double val2 = Getter(cmd.Var2);
+            Setter(cmd.Var3, val + val2);  
         }            
 
-        private void Multiple()
+        private void Multiple(Command cmd)
         {
-            if (user_input.Length != 4) 
+            if (cmd.Var3 == null) 
             {
                 MessageBox.Show("MUL command requires 3 arguments: MUL dest src1 src2");
                 return;
             }
-            double val = Getter(user_input[1]);
-            double val2 = Getter(user_input[2]);
-            Setter(user_input[3], val * val2);
+            double val = Getter(cmd.Var1);
+            double val2 = Getter(cmd.Var2);
+            Setter(cmd.Var3, val * val2);
         }
 
-        private void Divide()
+        private void Divide(Command cmd)
         {
-            if (user_input.Length != 4) 
+            if (cmd.Var3 == null)
             {
                 MessageBox.Show("DIV command requires 4 arguments.");
                 return;
             }
 
-            double val = Getter(user_input[1]);
-            double val2 = Getter(user_input[2]);
-            Setter(user_input[3], val / val2);
+            double val = Getter(cmd.Var1);
+            double val2 = Getter(cmd.Var2);
+            Setter(cmd.Var3, val / val2);
         }
 
 
-        private void Substract()
+        private void Substract(Command cmd)
                 {
-            if (user_input.Length != 4)
+            if (cmd.Var3 == null)
             {
                 MessageBox.Show("SUB command requires 4 arguments.");
                 return;
             }
 
-            double val = Getter(user_input[1]);
-            double val2 = Getter(user_input[2]);
-            Setter(user_input[3], val - val2);
+            double val = Getter(cmd.Var1);
+            double val2 = Getter(cmd.Var2);
+            Setter(cmd.Var3, val - val2);
         }
 
 
-        private void IntegerV()
+        private void IntegerV(Command cmd)
         {
-            if (user_input.Length != 3)
+            if (cmd.Var3 == null)
             {
                 MessageBox.Show("INT command requires 3 arguments.");
                 return;
             }
             IntV temp = new IntV();            
-            if (double.TryParse(user_input[2], out temp.value))
+            if (double.TryParse(cmd.Var2, out temp.value))
             {
-                temp.name = user_input[1];
+                temp.name = cmd.Var1;
                 int_list.Add(temp);
                 MessageBox.Show("Created " + int_list[int_list.Count - 1].name + " with a value of " + int_list[int_list.Count - 1].value + ".");
             }
@@ -229,17 +213,17 @@ namespace My_Assembly_Code
         }
 
 
-        private void CharacterV()
+        private void CharacterV(Command cmd)
         {
-            if (user_input.Length != 3)
+            if (cmd.Var3 == null)
             {
                 MessageBox.Show("CHAR command requires 3 arguments.");
                 return;
             }
             CharV temp = new CharV();
-            if (char.TryParse(user_input[2], out temp.value))
+            if (char.TryParse(cmd.Var2, out temp.value))
             {
-                temp.name = user_input[1];
+                temp.name = cmd.Var1;
                 char_list.Add(temp);
                 MessageBox.Show("Created " + char_list[char_list.Count - 1].name + " with a value of " + char_list[char_list.Count - 1].value + ".");
             }
