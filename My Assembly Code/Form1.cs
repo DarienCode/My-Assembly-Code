@@ -193,7 +193,7 @@ namespace My_Assembly_Code
 
         private void IntegerV(Command cmd)
         {
-            if (cmd.Var3 == null)
+            if (cmd.Var1 == null || cmd.Var2 == null)
             {
                 MessageBox.Show("INT command requires 3 arguments.");
                 return;
@@ -215,7 +215,7 @@ namespace My_Assembly_Code
 
         private void CharacterV(Command cmd)
         {
-            if (cmd.Var3 == null)
+            if (cmd.Var1 == null || cmd.Var2 == null)
             {
                 MessageBox.Show("CHAR command requires 3 arguments.");
                 return;
