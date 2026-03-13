@@ -124,13 +124,13 @@ namespace My_Assembly_Code
                 {
                     Substract(cmd);
                 }
-                else if (user_input[0] == "INT") // call the integer variable command
+                else if (cmd.Operation == "INT") // call the integer variable command
                 {
-                    IntegerV();
+                    IntegerV(cmd);
                 }
-                else if (user_input[0] == "CHAR") // call the character variable command
+                else if (cmd.Operation == "CHAR") // call the character variable command
                 {
-                    CharacterV();
+                    CharacterV(cmd);
                 }
                 else // Command error
                 {
@@ -191,17 +191,17 @@ namespace My_Assembly_Code
         }
 
 
-        private void IntegerV()
+        private void IntegerV(Command cmd)
         {
-            if (user_input.Length != 3)
+            if (cmd.Var3 == null)
             {
                 MessageBox.Show("INT command requires 3 arguments.");
                 return;
             }
             IntV temp = new IntV();            
-            if (double.TryParse(user_input[2], out temp.value))
+            if (double.TryParse(cmd.Var2, out temp.value))
             {
-                temp.name = user_input[1];
+                temp.name = cmd.Var1;
                 int_list.Add(temp);
                 MessageBox.Show("Created " + int_list[int_list.Count - 1].name + " with a value of " + int_list[int_list.Count - 1].value + ".");
             }
@@ -213,17 +213,17 @@ namespace My_Assembly_Code
         }
 
 
-        private void CharacterV()
+        private void CharacterV(Command cmd)
         {
-            if (user_input.Length != 3)
+            if (cmd.Var3 == null)
             {
                 MessageBox.Show("CHAR command requires 3 arguments.");
                 return;
             }
             CharV temp = new CharV();
-            if (char.TryParse(user_input[2], out temp.value))
+            if (char.TryParse(cmd.Var2, out temp.value))
             {
-                temp.name = user_input[1];
+                temp.name = cmd.Var1;
                 char_list.Add(temp);
                 MessageBox.Show("Created " + char_list[char_list.Count - 1].name + " with a value of " + char_list[char_list.Count - 1].value + ".");
             }
