@@ -13,5 +13,5 @@ namespace My_Assembly_Code
         public string Var1 { get; set; }
         public string Var2 { get; set; }
         public string Var3 { get; set; }
-    }
+    }    
 }

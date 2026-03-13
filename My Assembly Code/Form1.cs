@@ -2,7 +2,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
 
 namespace My_Assembly_Code
-{
+{    
     public partial class Form : System.Windows.Forms.Form
     {
         double r1 = 0; // Register 1
@@ -10,6 +10,18 @@ namespace My_Assembly_Code
         double r3 = 0; // Register 3
         List<Command> command_list = new List<Command>();
 
+        public class CharV // character variable format
+        {
+            public string name;
+            public char value;
+        }
+        public class IntV // integer variable format
+        {
+            public string name;
+            public double value;
+        }
+        List<CharV> char_list = new List<CharV>();
+        List<IntV> int_list = new List<IntV>();
 
         public List<Command> ParseInput(string Input) // Create command_list
         {
@@ -112,6 +124,14 @@ namespace My_Assembly_Code
                 {
                     Substract(cmd);
                 }
+                else if (user_input[0] == "INT") // call the integer variable command
+                {
+                    IntegerV();
+                }
+                else if (user_input[0] == "CHAR") // call the character variable command
+                {
+                    CharacterV();
+                }
                 else // Command error
                 {
                     MessageBox.Show("'" + cmd.Operation + "' is an invalid command.");
@@ -168,6 +188,50 @@ namespace My_Assembly_Code
             double val = Getter(cmd.Var1);
             double val2 = Getter(cmd.Var2);
             Setter(cmd.Var3, val - val2);
+        }
+
+
+        private void IntegerV()
+        {
+            if (user_input.Length != 3)
+            {
+                MessageBox.Show("INT command requires 3 arguments.");
+                return;
+            }
+            IntV temp = new IntV();            
+            if (double.TryParse(user_input[2], out temp.value))
+            {
+                temp.name = user_input[1];
+                int_list.Add(temp);
+                MessageBox.Show("Created " + int_list[int_list.Count - 1].name + " with a value of " + int_list[int_list.Count - 1].value + ".");
+            }
+            else
+            {
+                MessageBox.Show("INT command 3rd argument requires an integer input.");
+                return;
+            }
+        }
+
+
+        private void CharacterV()
+        {
+            if (user_input.Length != 3)
+            {
+                MessageBox.Show("CHAR command requires 3 arguments.");
+                return;
+            }
+            CharV temp = new CharV();
+            if (char.TryParse(user_input[2], out temp.value))
+            {
+                temp.name = user_input[1];
+                char_list.Add(temp);
+                MessageBox.Show("Created " + char_list[char_list.Count - 1].name + " with a value of " + char_list[char_list.Count - 1].value + ".");
+            }
+            else
+            {
+                MessageBox.Show("CHAR command 3rd argument requires a single character input.");
+                return;
+            }
         }
 
         private double Getter(string reg)
