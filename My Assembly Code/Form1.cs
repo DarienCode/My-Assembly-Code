@@ -2,24 +2,14 @@ using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
 
 namespace My_Assembly_Code
-{    
-    public partial class Form : System.Windows.Forms.Form
+{
+    public partial class Form1 : System.Windows.Forms.Form
     {
-        double r1 = 0; // Register 1
-        double r2 = 0; // Register 2
-        double r3 = 0; // Register 3
+        double r1 = 0; // Not really needed but I don't want to change things
+        double r2 = 0;
+        double r3 = 0;
         List<Command> command_list = new List<Command>();
 
-        public class CharV // character variable format
-        {
-            public string name;
-            public char value;
-        }
-        public class IntV // integer variable format
-        {
-            public string name;
-            public double value;
-        }
         List<CharV> char_list = new List<CharV>();
         List<IntV> int_list = new List<IntV>();
 
@@ -82,12 +72,12 @@ namespace My_Assembly_Code
             {
                 MessageBox.Show("Value registered must be an integer.");
                 return;
-            }           
+            }
         }
-        public Form()
+        public Form1()
         {
             InitializeComponent();
-            
+
         }
 
         private void output_TextChanged(object sender, EventArgs e)
@@ -139,21 +129,21 @@ namespace My_Assembly_Code
             }
         }
 
-        private void Add(Command cmd) 
+        private void Add(Command cmd)
         {
-          if (cmd.Var3 == null) // Validate correct number of arguments
+            if (cmd.Var3 == null) // Validate correct number of arguments
             {
                 MessageBox.Show("ADD command requires 3 arguments.");
                 return;
             }
             double val = Getter(cmd.Var1);
             double val2 = Getter(cmd.Var2);
-            Setter(cmd.Var3, val + val2);  
-        }            
+            Setter(cmd.Var3, val + val2);
+        }
 
         private void Multiple(Command cmd)
         {
-            if (cmd.Var3 == null) 
+            if (cmd.Var3 == null)
             {
                 MessageBox.Show("MUL command requires 3 arguments: MUL dest src1 src2");
                 return;
@@ -178,7 +168,7 @@ namespace My_Assembly_Code
 
 
         private void Substract(Command cmd)
-                {
+        {
             if (cmd.Var3 == null)
             {
                 MessageBox.Show("SUB command requires 4 arguments.");
@@ -198,7 +188,7 @@ namespace My_Assembly_Code
                 MessageBox.Show("INT command requires 3 arguments.");
                 return;
             }
-            IntV temp = new IntV();            
+            IntV temp = new IntV();
             if (double.TryParse(cmd.Var2, out temp.value))
             {
                 temp.name = cmd.Var1;
@@ -236,12 +226,13 @@ namespace My_Assembly_Code
 
         private double Getter(string reg)
         {
-                switch (reg)
+            switch (reg)
             {
                 case "R1": return r1;
                 case "R2": return r2;
                 case "R3": return r3;
-                default: MessageBox.Show("No register detected");
+                default:
+                    MessageBox.Show("No register detected");
                     return 0;
             }
         }
@@ -255,7 +246,31 @@ namespace My_Assembly_Code
                 default: MessageBox.Show("Must name a valid register. (R1, R2, or R3)"); break;
             }
         }
-    }
 
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                ManageFile.Save(sfd.FileName, char_list, int_list);
+            }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                ManageFile.LoadXML(ofd.FileName, char_list, int_list);
+            }
+        }
+
+        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InfoForm info = new InfoForm();
+            info.Show();
+        }
+    }
 }
+
     

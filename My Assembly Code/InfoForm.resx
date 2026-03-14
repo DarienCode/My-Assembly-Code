@@ -117,7 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>COMMANDS:
+  LD  5 R1          → Load 5 into R1
+  ADD R1 R2 R3      → R3 = R1 + R2
+  SUB R1 R2 R3      → R3 = R1 - R2
+  MUL R1 R2 R3      → R3 = R1 * R2
+  DIV R1 R2 R3      → R3 = R1 / R2
+  MOV R1 R2         → R2 = R1
+
+VARIABLES:
+  INT myVar 5       → Create integer variable
+  CHAR myChar A     → Create character variable
+
+FILE:
+  File → Save       → Save variables to XML
+  File → Open       → Load variables from XML</value>
+  </data>
 </root>
