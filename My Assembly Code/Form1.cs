@@ -122,6 +122,10 @@ namespace My_Assembly_Code
                 {
                     CharacterV(cmd);
                 }
+                else if (cmd.Operation == "MOV")
+                {
+                    Move(cmd);
+                }
                 else // Command error
                 {
                     MessageBox.Show("'" + cmd.Operation + "' is an invalid command.");
@@ -180,6 +184,17 @@ namespace My_Assembly_Code
             Setter(cmd.Var3, val - val2);
         }
 
+        private void Move(Command cmd)
+        {
+            if (cmd.Var2 == null)
+            {
+                MessageBox.Show("MOV command requires 2 arguments.");
+                return;
+            }
+
+            double val = Getter(cmd.Var1);
+            Setter(cmd.Var2, val);
+        }
 
         private void IntegerV(Command cmd)
         {
